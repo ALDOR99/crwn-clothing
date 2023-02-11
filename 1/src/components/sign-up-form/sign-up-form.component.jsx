@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import {
   createAuthUserWithEmailAndPassword,
@@ -13,6 +13,8 @@ import "./sign-up-form.styles.scss";
 
 import Button from "../button/button.component";
 
+import { UserContext } from "../../contexts/user.context";
+
 //--------------------------------------------------------------------------------
 
 const defaultFormFields = {
@@ -26,8 +28,9 @@ const defaultFormFields = {
 
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-
   const { displayName, email, password, confirmPassword } = formFields;
+
+  console.log("hit");
 
   console.log(formFields);
 
@@ -66,6 +69,7 @@ const SignUpForm = () => {
   };
 
   //-------------------------------------------------------------------------
+
   return (
     <div className="sign-up-container">
       <h2>Don't have an account?</h2>

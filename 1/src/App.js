@@ -5,12 +5,13 @@ import Authentication from "./components/routes/authentication/authentication.co
 //--------------------------------------------------------------------------------
 
 const Shop = () => {
-  return <h1>I am the shop page</h1>;
+  return <h1>I am the shop page</h1>; 
+
 };
 
 //----------------------------------------------------------------------------+----
 
-const App = () => {
+const App = () => {    
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
@@ -24,3 +25,6 @@ const App = () => {
 
 //--------------------------------------------------------------------------------
 export default App;
+
+
+

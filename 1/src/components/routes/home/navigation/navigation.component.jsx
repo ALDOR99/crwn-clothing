@@ -10,7 +10,7 @@ import "./navigation.styles.scss";
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
 
-  console.log(currentUser);
+  //console.log(currentUser);  
 
   return (
     <Fragment>
@@ -36,3 +36,4 @@ const Navigation = () => {
 //--------------------------------------------------------------------------------
 
 export default Navigation;
+
