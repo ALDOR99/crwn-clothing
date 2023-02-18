@@ -75,6 +75,7 @@ export const CartProvider = ({ children }) => {
   };
 
   //------------------------------------------------------------------------------
+
   const removeItemToCart = (cartItemToRemove) => {
     setCartItems(removeCartItem(cartItems, cartItemToRemove));
   };
