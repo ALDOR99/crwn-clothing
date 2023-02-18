@@ -45,6 +45,7 @@ export const CartProvider = ({ children }) => {
     );
     setCartCount(newCartCount);
   }, [cartItems]);
+
   //------------------------------------------------------------------------------
 
   const addItemToCart = (productToAdd) => {
