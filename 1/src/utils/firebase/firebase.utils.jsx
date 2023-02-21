@@ -10,7 +10,14 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+} from "firebase/firestore";
 
 //----------------------------------------------------------------------------
 
@@ -51,6 +58,12 @@ export const signInWithGoogleRedirect = () =>
 //----------------------------------------------------------------------------
 
 export const db = getFirestore();
+
+//----------------------------------------------------------------------------
+
+const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+};
 
 //----------------------------------------------------------------------------
 
