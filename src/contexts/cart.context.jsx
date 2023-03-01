@@ -1,4 +1,6 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useReducer } from "react";
+
+//--------------------------------------------------------------------
 
 const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
@@ -15,6 +17,8 @@ const addCartItem = (cartItems, productToAdd) => {
 
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
+
+//--------------------------------------------------------------------
 
 const removeCartItem = (cartItems, cartItemToRemove) => {
   // find the cart item to remove
@@ -35,8 +39,12 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
   );
 };
 
+//--------------------------------------------------------------------
+
 const clearCartItem = (cartItems, cartItemToClear) =>
   cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
+
+//--------------------------------------------------------------------
 
 export const CartContext = createContext({
   isCartOpen: false,
@@ -49,6 +57,34 @@ export const CartContext = createContext({
   cartTotal: 0,
 });
 
+//--------------------------------------------------------------------
+
+const INITIAL_STATE = {
+  isCartOpen: false,
+  cartItems: [],
+  cartCount: 0,
+  cartTotal: 0,
+};
+
+//--------------------------------------------------------------------
+
+const cartReducer = (state, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case "SET_CART_ITEMS":
+      return {
+        ...state,
+        ...payload,
+      };
+    default:
+      throw new Error(`unhandled type of ${type} in cartReducer`);
+  }
+};
+
+//--------------------------------------------------------------------
+
+//--------------------------------------------------------------------
 export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
@@ -70,6 +106,8 @@ export const CartProvider = ({ children }) => {
     );
     setCartTotal(newCartTotal);
   }, [cartItems]);
+
+  const updateCartItemsReducer = (newCartItems) => {};
 
   const addItemToCart = (productToAdd) => {
     setCartItems(addCartItem(cartItems, productToAdd));
@@ -96,3 +134,5 @@ export const CartProvider = ({ children }) => {
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
+
+//--------------------------------------------------------------------
